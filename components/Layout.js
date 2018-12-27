@@ -1,7 +1,22 @@
 import Link from 'next/link'
-// import './Layout.css'
+import Head from 'next/head'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+
+Router.onRouteChangeStart = url => {
+  NProgress.start()
+}
+
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
+
 export default ({ children, title }) => (
   <div className='main'>
+    <Head>
+      <title>Portfolio App</title>
+      <link rel='stylesheet'
+        hrer='https://unpkg.com/nprogress@0.2.0/nprogress.css' />
+    </Head>
     <header className='header'>
       <Link href='/'><a className='link'>Home</a></Link>
       <Link href='/about'><a className='link'>About</a></Link>
